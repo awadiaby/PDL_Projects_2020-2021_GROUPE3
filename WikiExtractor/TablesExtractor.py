@@ -18,11 +18,8 @@ class TablesExtractor:
     - methode is_url_ok(url)
     - methode get_all_tables
     - methode pour ecrire une table dans un csv write_table_to_csv()
-    """
-    #constructor of class
-    #def __init__(self):
-    #   print("init")
-       
+    """ 
+    #this method check if the url is ok
     def is_ok_url(self, url):
         request = urllib.request.Request(url)
         request.get_method = lambda: 'HEAD'
@@ -31,7 +28,7 @@ class TablesExtractor:
             return True
         except  urllib.request.HTTPError:
             return False
-        
+   
     """Function extracting all tables from a given webpage, parameter = URL string"""
     def get_all_tables(self, url):
        if self.is_ok_url(url):
@@ -40,8 +37,19 @@ class TablesExtractor:
             uClient.close()
             page_soup = soup(page_html, "html.parser")
             tables = page_soup.find_all("table")
-            print(tables[0])
-            return tables 
+           # print(tables[0])
+            return tables
+       return []
+     
+        
+    #this method check if the tables is relevant
+    def is_relevent(self, table):
+        th_set = table.find_all("tr")
+        print("*********** table relevent" ,th_set)
+        if len(th_set)<=2:
+            return False
+        elif len(th_set)>2:
+            return True
     """
     table : 
     outputfolder : 
@@ -59,6 +67,7 @@ class TablesExtractor:
                 header += f"{th_data}\n"
             else:
                 header += f"{th_data}{delimiter}"
+        #if self.is_relevent(table):
         output_file.write(header)
         # Table data from <td> cells for each <tr> row
         tr_set = table.find_all("tr")
@@ -71,5 +80,6 @@ class TablesExtractor:
                     line += f"{td_data}\n"
                 else:
                     line += f"{td_data}{delimiter}"
-            output_file.write(line)
+        #if self.is_relevent(table):
+        output_file.write(line)
             
