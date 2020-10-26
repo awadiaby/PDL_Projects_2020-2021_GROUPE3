@@ -93,7 +93,7 @@ class TestExtractor(unittest.TestCase):
         self.save_table_to_csv(url, 'truth_tables')
         list_of_truth_tables = os.listdir(truth_tables_folder_path)
         
-        for i in  range(10000):
+        for i in  range(10):
             self.save_table_to_csv(url, 'test_tables')
             # reading tables from csv files
             list_of_test_tables = os.listdir(test_tables_folder_path)
