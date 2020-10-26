@@ -21,7 +21,7 @@ h2txt = html2text.HTML2Text()
 
 # Load input file to array
 def load_file_content(file):
-    with open("inputdata/{}".format(file), 'r', encoding = 'utf-8') as f:
+    with open("inputdata/{}".format(file), 'r') as f:
         data = f.readlines()
 
     return data
@@ -97,32 +97,16 @@ def read_table_tag_to_csv(wikitable):
 
 # Write csv content to csv directory with name
 def output_csv_file(name, content):
-    with open('output/csv/{}.csv'.format(name), 'w',  encoding = 'utf-8') as handler:
+    with open('output/csv/{}.csv'.format(name), 'w', encoding ='utf-8') as handler:
         handler.write(content)
 
 # Write html content to html directory with name
 def output_html_file(name, content):
-    with open('output/html/{}.html'.format(name), 'w',  encoding = 'utf-8') as handler:
+    with open('output/html/{}.html'.format(name), 'w', encoding ='utf-8') as handler:
         handler.write(content)
 
 
-
-
-##################################
-#
-# MAIN
-#
-##################################
-# Load urls in variable
-wikiurls = load_file_content("wikiurls.txt")
-
-n = 0
-for wikiurl in wikiurls:
-
-    n += 1
-    print("Loading url {} ...".format(n))
-
-    wikiurl = wikiurl[0:-1]
+def extract_wikitables(wikiurl):
 
     # read HTML content from url
     wiki_html_content = read_url_html_content(url=wikiurl)
@@ -137,13 +121,40 @@ for wikiurl in wikiurls:
 
         i = 0
         for wikitable in wikitables:
-            
+                
             i += 1
             try:
                 wikicsv = read_table_tag_to_csv(wikitable=wikitable)  #read table to csv
                 output_csv_file(name="{}_{}".format(wikiurl, i), content=wikicsv) #save it to file
             except Exception as e:
-                print("Smthg went wrong on table : {} \nError : {}".format(i, e))
+                print("Something went wrong on table : {} \nError : {}".format(i, e))
+                return False, 0
+    else:
+        return False, 0
+
+    return True, i
 
 
-print("All done !")
+
+def extract():
+    # Load urls in variable
+    wikiurls = load_file_content("wikiurls.txt")
+
+    n = 0
+    for wikiurl in wikiurls:
+        n += 1
+        print("Loading url {} ...".format(n))
+        wikiurl = wikiurl[0:-1]
+        extract_wikitables(wikiurl=wikiurl)
+
+        
+
+
+
+
+####################
+# Main
+####################
+if __name__ == '__main__':
+    extract()
+    print("All done !")
