@@ -1,3 +1,5 @@
 tests.ipynb
 output/csv/*
 output/html/*
+output/test_tables/*
+output/truth_tables/*
