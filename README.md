@@ -101,6 +101,6 @@ Authors:
   > Safietou Diallo
   > MAurice AKA
   
-Copyright:2020
+Copyright 2020 
 
-__Happy Coding !__
+__ Happy Coding !__
