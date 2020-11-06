@@ -29,6 +29,10 @@ if __name__ == '__main__':
     # count number of csv extract
     list = os.listdir('output/csv') 
     number_files = len(list)
-    print ("Number of extracted CSV: ",number_files," millisecondes")
-    print('Duration:', timeexec)
+    print ("Number of extracted CSV: ",number_files," lines")
+    lignesHtml =  open("number-execution.txt", "w")
+    lignesHtml.write(str(number_files))
+    print('Duration:', timeexec," millisecondes")
+    lignesHtml =  open("temps-execution.txt", "w")
+    lignesHtml.write(str(timeexec))
     print("All done !")

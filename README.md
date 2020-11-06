@@ -78,14 +78,17 @@ To run the project you must excecute :
   
     >WITH LINUX
       
-            $ python3 unittest TestExtractor
+            $ python3 unittest test_extractor
 
       >WITH WINDOWS
       
-           py -m unittest TestExtractor
+           py -m unittest test_extractor
 
 ###################################################################################################################################################
-
+>__Scripts Bash__
+>To run extractors use the script RunExtrators.cmd define in the root of this repo.
+This script is used to compare the statitics of the two scrapers (JAVA & Python). 
+It compares the execution time of the two scrapers and the number of generated lines.
 >__Improvements__
 
 >- Log 404 error urls in some file for analysis
