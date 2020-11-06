@@ -26,6 +26,12 @@
 >- Log 404 error urls in some file for analysis
 >- Consider colspan.s as one csv column
 >- More tests on functions
+
+Actors 2020-2021
+> Diaby Awa
+> Hedougbekoun Codjo Assogba
+>Safietou Diallo
+> MAurice AKA
 >
 
 __Happy Coding !__
