@@ -108,8 +108,8 @@ class TestExtractor(unittest.TestCase):
             
     # Extracting the tables of an url several times and check if the results are the same
     def test_performance_extractor2(self):
-        truth_tables_folder_path = "C:/Users/safie/Desktop/PDL_WikiExtractor/PDL_Projects_2020-2021_GROUPE3/output/truth_tables"
-        test_tables_folder_path = "C:/Users/safie/Desktop/PDL_WikiExtractor/PDL_Projects_2020-2021_GROUPE3/output/test_tables"
+        truth_tables_folder_path = "output/truth_tables"
+        test_tables_folder_path = "output/test_tables"
         nb_of_differences = 0
         url = "Comparison_between_Esperanto_and_Ido"
         # saving the first extraction tables in "truth_tables"
