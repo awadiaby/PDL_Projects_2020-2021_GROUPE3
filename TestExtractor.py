@@ -80,8 +80,31 @@ class TestExtractor(unittest.TestCase):
                     nbOfEmptyFiles += 1
         
         self.assertEqual(nbOfEmptyFiles, 0)
-         
-   
+        
+        
+        
+    def test_extract_wikitables_1(self):
+        extractor_python_html = Extractor_python_html()
+        result, nbwikitables = extractor_python_html.extract_wikitables(wikiurl='Comparison_of_email_clients')
+        self.assertTrue(result)
+        self.assertEqual(nbwikitables, 11)
+
+    def test_extract_wikitables_2(self):
+        extractor_python_html = Extractor_python_html()
+        result, nbwikitables =  extractor_python_html.extract_wikitables(wikiurl='Comparison_of_HTML_editors')
+        self.assertTrue(result)
+        self.assertEqual(nbwikitables, 7)
+  
+  
+    
+    def test_extractor(self):
+        
+        extractor_python_html = Extractor_python_html()
+        extract_done = False
+        extractor_python_html.extract()
+        extract_done = True
+        self.assertTrue(extract_done, "Extraction failed")
+
             
     # Extracting the tables of an url several times and check if the results are the same
     def test_performance_extractor2(self):

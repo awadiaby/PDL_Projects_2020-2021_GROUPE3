@@ -114,5 +114,50 @@ class Extractor_python_html:
             handler.write(content)
 
 
+    def extract_wikitables(self,wikiurl):
+
+    # read HTML content from url
+        wiki_html_content = self.read_url_html_content(url=wikiurl)
+
+        if wiki_html_content is not None: # everything went fine
+
+        # save html file
+            self.output_html_file(name=wikiurl, content=wiki_html_content)
+
+        # get tables in html content
+            wikitables = self.get_tables_from_html(wiki_html_content)
+
+            i = 0
+            for wikitable in wikitables:
+                
+               i += 1
+               try:
+                    wikicsv = self.read_table_tag_to_csv(wikitable=wikitable)  #read table to csv
+                    self.output_csv_file(name="{}_{}".format(wikiurl, i), content=wikicsv) #save it to file
+               except Exception as e:
+                   print("Something went wrong on table : {} \nError : {}".format(i, e))
+                   return False, 0
+        else:
+           return False, 0
+
+        return True, i
+
+
+
+    def extract(self):
+    # Load urls in variable
+       wikiurls = self.load_file_content("wikiurls.txt")
+
+       n = 0
+       for wikiurl in wikiurls:
+        n += 1
+        print("Loading url {} ...".format(n))
+        wikiurl = wikiurl[0:-1]
+        self.extract_wikitables(wikiurl=wikiurl)
+
+        
+
+
+
 
 
