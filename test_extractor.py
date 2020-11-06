@@ -42,7 +42,7 @@ class TestExtractor(unittest.TestCase):
 
     def test_extractor(self):
         extract_done = False
-        #extract()
+        extract()
         extract_done = True
         self.assertTrue(extract_done, "Extraction failed")
 
