@@ -14,6 +14,8 @@
 >Html2Text\
 >*$ pip install html2text*
 >
+>BeautifulSoup4\
+>*$ pip install beautifulsoup4*
 
 >__Run__
 >
