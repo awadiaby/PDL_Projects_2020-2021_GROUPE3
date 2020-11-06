@@ -78,11 +78,11 @@ To run the project you must excecute :
   
     >WITH LINUX
       
-            $ python3 unittest test_extractor
+            $ python3 unittest TestExtractor
 
       >WITH WINDOWS
       
-           py -m unittest test_extractor
+           py -m unittest TestExtractor
 
 ###################################################################################################################################################
 
