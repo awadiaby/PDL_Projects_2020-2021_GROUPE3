@@ -22,12 +22,13 @@ h2txt = html2text.HTML2Text()
 # Load urls in variable
 extractor_python_html = Extractor_python_html()
 if __name__ == '__main__':
-    start_time = time.monotonic()
+    start_time = time.monotonic() # beginning time
     extractor_python_html.extract()
-    end_time = time.monotonic()
-    timeexec= (end_time - start_time)*1000
+    end_time = time.monotonic()   # end time
+    timeexec= (end_time - start_time)*1000 # execution time in milliseconde
+    # count number of csv extract
     list = os.listdir('output/csv') 
     number_files = len(list)
-    print ("Number of extracted CSV: ",number_files)
+    print ("Number of extracted CSV: ",number_files," millisecondes")
     print('Duration:', timeexec)
     print("All done !")
