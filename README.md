@@ -31,12 +31,12 @@ You need to install python on your computer:
       >WITH LINUX
       
          - mkdir ./output/csv/
-         - mkdir ./output/html
+         - mkdir ./output/html/
 
      >WITH WINDOWS
 
          - md ./output/csv/
-         - md ./output/html
+         - md ./output/html/
 
 ##############################################################################################################################################
 
